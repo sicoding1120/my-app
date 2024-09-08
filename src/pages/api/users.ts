@@ -58,7 +58,7 @@ export default async function handler(
             password: hashedPassword,
             name: name,
           };
-          res.status(201).json(userApi)
+          res.status(200).json(userApi)
         }
     }
   } catch (err) {
