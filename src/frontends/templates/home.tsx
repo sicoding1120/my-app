@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import HeroSection from "@/components/fragments/heroSection";
-import Sponsor from "@/components/fragments/sponsor";
-import About from "../fragments/about";
-import Instructor from "../fragments/instructor";
-import Mentor from "../fragments/mentor";
-import Testimonial from "../fragments/testimonial";
+import HeroSection from "@/frontends/fragments/home/heroSection";
+import Sponsor from "@/frontends/fragments/home/sponsor";
+import About from "@/frontends/fragments/home/about";
+import Instructor from "@/frontends/fragments/home/instructure";
+import Mentor from "@/frontends/fragments/home/mentor";
+import Testimonial from "@/frontends/fragments/home/testimonial.";
 
 const Home = () => {
   return (
