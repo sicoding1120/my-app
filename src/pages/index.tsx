@@ -8,13 +8,10 @@ const Index = () => {
   const handleUser = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "https://my-app-one-pi-53.vercel.app/api/users",
-        {
-          name,
-          password,
-        }
-      );
+      const response = await axios.post("https://my-app-one-pi-53.vercel.app/api/users", {
+        name,
+        password,
+      });
       if (typeof window !== "undefined") {
         window.location.reload();
       }

@@ -51,14 +51,15 @@ export default async function handler(
         if (!name || !password) {
           return;
         } else {
-          const hashedPassword: string = (await hashingPassword(password)) as never;
+          const hashedPassword: string = await hashingPassword(password) as never;
           const id = CreateIdRandom();
           const userApi: any = {
             id: id,
             password: hashedPassword,
             name: name,
           };
-          res.status(200).json(userApi)
+          const sendUser = await prisma.user.create({ data: userApi });
+          res.status(200).json(sendUser)
         }
     }
   } catch (err) {
