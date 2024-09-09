@@ -1,6 +1,6 @@
 import { userService } from "@/backends/service/user";
 import { user } from "@/backends/types";
-import async from "../pages/api/users";
+// import async from "../pages/api/users";
 
 export class User extends userService {
   constructor() {
