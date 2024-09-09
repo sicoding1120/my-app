@@ -60,7 +60,6 @@ export class userService {
         password: hashedPassword,
         name: name,
       };
-
       const createUser = await prisma.user.create({ data: userApi });
       return await res.status(201).json(createUser);
     }

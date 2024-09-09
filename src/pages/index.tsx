@@ -12,9 +12,7 @@ const Index = () => {
         name,
         password,
       });
-      if (typeof window !== "undefined") {
         window.location.reload();
-      }
       console.log(response.data);
     } catch (error) {
       console.error(error);
