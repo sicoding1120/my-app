@@ -1,4 +1,4 @@
-import { User } from "@/controllers/user";
+// import { User } from "@/controllers/user";
 // import { userService } from "@/service/user";
 import { PrismaClient } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -7,7 +7,7 @@ import bcrypt from "bcryptjs";
 
 
 const prisma = new PrismaClient();
-const user = new User();
+// const user = new User();
 
 const hashingPassword = async (password: string) => {
   if (!password) {

@@ -1,38 +1,20 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
+import { Kanit } from "next/font/google";
+import { useRouter } from "next/router";
+import Home from "@/frontends/templates/home";
+
+const kanit = Kanit({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600"],
+});
 
 const Index = () => {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleUser = async (e: any) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("https://my-app-one-pi-53.vercel.app/api/users", {
-        name,
-        password,
-      });
-        window.location.reload();
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+  const { pathname } = useRouter();
+  console.log(pathname);
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="username"
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="username"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      \<button onClick={handleUser}>create</button>
-    </div>
+    <main className={`${kanit.className} dark:bg-color-c7 bg-color-c4`}>
+      <Home />
+    </main>
   );
 };
 

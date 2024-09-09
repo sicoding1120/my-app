@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/lib/supabase.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/supabase.js"],
   "exclude": ["node_modules"]
 }

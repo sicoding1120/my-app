@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { user } from "@/types";
+import { user } from "@/backends/types";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { useRouter } from "next/router";
@@ -41,7 +41,7 @@ export class userService {
     if (!verify) {
       return res.status(401).json({ message: "Invalid password" });
     } else {
-      router.push("/dashboard")
+      router.push("/dashboard");
       return res.json(user);
     }
   }
