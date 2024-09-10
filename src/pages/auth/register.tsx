@@ -4,9 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Kanit, Inter } from "next/font/google";
 import { Circle } from "@chakra-ui/react";
-import dataRandom from "@/data/dataRandom.json";
 import InputNormal from "@/frontends/components/inputNormal";
-// import user from "../data/user.json";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -24,7 +22,6 @@ const validOfId = [
 ];
 
 const Authentification = () => {
-  const { query } = useRouter();
   const router = useRouter();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -115,7 +112,7 @@ const Authentification = () => {
                 className="w-12 h-12 bg-white rounded-md cursor-pointer"
               >
                 <Image
-                  src={"/TechfusionAcademy/assets/logo/logoWeb.png"}
+                  src={"/assets/logo/logoWeb.png"}
                   alt={""}
                   width={100}
                   height={100}
@@ -125,171 +122,89 @@ const Authentification = () => {
 
             <div className="flex flex-col">
               <p className={"md:text-4xl md:text-black text-white text-2xl"}>
-                {query.slug === "login"
-                  ? "Log in to your account"
-                  : "Register for a new account"}
+                Register for a new account
               </p>
               <p className="md:text-md text-sm md:text-color-text-2 text-white/70">
-                {query.slug === "register"
-                  ? "Welcome Buddy, please register to join with us"
-                  : "Welcome back, select method to login"}
+                Welcome back, select method to login
               </p>
             </div>
           </div>
-          {query.slug === "login" ? (
-            <div className={inter.className}>
-              <div className="flex gap-4">
-                {dataRandom.id.button.type[2].data.map(
-                  (items: any, index: any) => (
-                    <button
-                      className="md:px-14 px-8 btn bg-white border border-grey"
-                      key={index}
-                    >
-                      <Image
-                        src={items.leftIconUrl}
-                        alt="Image Alt Text"
-                        width={20}
-                        height={20}
-                      />
-
-                      {items.title}
-                    </button>
-                  )
-                )}
-              </div>
-            </div>
-          ) : null}
           <div className="flex flex-col gap-8">
             <form
               action=""
-              onSubmit={query.slug === "register" ? handleSubmit : undefined}
+              onSubmit={handleSubmit}
             >
-              {query.slug === "register" ? (
-                <div className="flex flex-col gap-4">
-                  <InputNormal
-                    classname={
-                      name === "" && validasiName
-                        ? "input-error"
-                        : name !== "" && validasiName
+              <div className="flex flex-col gap-4">
+                <InputNormal
+                  classname={
+                    name === "" && validasiName
+                      ? "input-error"
+                      : name !== "" && validasiName
+                      ? "input-success"
+                      : "input-bordered"
+                  }
+                  type={"text"}
+                  onchange={(e: any) => setName(e.target.value)}
+                  onclick={() => setValidasiName(true)}
+                  value={name}
+                >
+                  d
+                </InputNormal>
+                {name === "" && validasiName
+                  ? "colom nama harus diisi"
+                  : name !== "" && validasiName
+                  ? " "
+                  : " colom nama harus diisi"}
+                <InputNormal
+                  classname={
+                    password === "" && validasiPassword
+                      ? "input-error"
+                      : password !== "" && validasiPassword
+                      ? password.length > 8
                         ? "input-success"
-                        : "input-bordered"
-                    }
-                    type={"text"}
-                    onchange={(e: any) => setName(e.target.value)}
-                    onclick={() => setValidasiName(true)}
-                    value={name}
-                  >
-                    d
-                  </InputNormal>
-                  {name === "" && validasiName
-                    ? "colom nama harus diisi"
-                    : name !== "" && validasiName
-                    ? " "
-                    : " colom nama harus diisi"}
-                  <InputNormal
-                    classname={
-                      password === "" && validasiPassword
-                        ? "input-error"
-                        : password !== "" && validasiPassword
-                        ? password.length > 8
-                          ? "input-success"
-                          : "input-warning"
-                        : "input-bordered"
-                    }
-                    onclick={() => setValidasiPassword(true)}
-                    type={"password"}
-                    onchange={(e: any) => {
-                      setPassword(e.target.value);
-                    }}
-                    value={password}
-                  >
-                    d
-                  </InputNormal>
-                  {password === "" && validasiPassword
-                    ? "colom password harus diisi"
-                    : password !== "" && validasiPassword
-                    ? password.length > 7
-                      ? ""
-                      : "password harus lebih dari 7 karakter"
-                    : ""}
-                </div>
-              ) : (
-                <div className="flex flex-col gap-4">
-                  <InputNormal
-                    classname={
-                      name === "" && validasiName
-                        ? "input-error"
-                        : name !== "" && validasiName
-                        ? "input-success"
-                        : "input-bordered"
-                    }
-                    type={"text"}
-                    onchange={(e: any) => setName(e.target.value)}
-                    onclick={() => setValidasiName(true)}
-                    value={name}
-                  >
-                    d
-                  </InputNormal>
-                  {name === "" && validasiName
-                    ? "colom nama harus diisi"
-                    : name !== "" && validasiName
+                        : "input-warning"
+                      : "input-bordered"
+                  }
+                  onclick={() => setValidasiPassword(true)}
+                  type={"password"}
+                  onchange={(e: any) => {
+                    setPassword(e.target.value);
+                  }}
+                  value={password}
+                >
+                  d
+                </InputNormal>
+                {password === "" && validasiPassword
+                  ? "colom password harus diisi"
+                  : password !== "" && validasiPassword
+                  ? password.length > 7
                     ? ""
-                    : ""}
-                  <InputNormal
-                    classname={
-                      password === "" && validasiPassword
-                        ? "input-error"
-                        : password !== "" && validasiPassword
-                        ? password.length > 8
-                          ? "input-success"
-                          : "input-warning"
-                        : "input-bordered"
-                    }
-                    onclick={() => setValidasiPassword(true)}
-                    type={"password"}
-                    onchange={(e: any) => {
-                      setPassword(e.target.value);
-                    }}
-                    value={password}
-                  >
-                    d
-                  </InputNormal>
-                  {password === "" && validasiPassword
-                    ? "colom password harus diisi"
-                    : password !== "" && validasiPassword
-                    ? password.length > 8
-                      ? ""
-                      : "password harus lebih dari 7 karakter"
-                    : ""}
-                </div>
-              )}
+                    : "password harus lebih dari 7 karakter"
+                  : ""}
+              </div>
             </form>
             <div className="w-full flex flex-col gap-4 text-center">
               <button
                 className="btn w-full bg-bgButton bg-cover  text-white"
                 type="submit"
-                onClick={query.slug === "register" ? handleSubmit : handleUser}
+                onClick={handleSubmit}
               >
-                {query.slug === "register" ? "Register" : "Log in"}
+                register
               </button>
               <div className="md:text-color-text-2 text-white/70 flex gap-2 justify-center">
-                {query.slug === "register"
-                  ? "Do you have an account?"
-                  : "Don't have an account?"}
+                Do you have an account?
                 <Link
-                  href={
-                    query.slug === "register" ? "/auth/login" : "/auth/register"
-                  }
+                  href={"/auth/login"}
                   className="text-blue-500 cursor-pointer"
                 >
-                  {query.slug === "register" ? "Log in" : "create an account"}
+                  Log in
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <RightSection query={query.slug} />
+      {/* <RightSection query={} /> */}
     </section>
   );
 };
