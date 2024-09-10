@@ -1,17 +1,16 @@
 import { userService } from "@/backends/service/user";
-import { user } from "@/backends/types";
-// import async from "../pages/api/users";
+import { NextApiRequest, NextApiResponse } from "next";
 
 export class User extends userService {
   constructor() {
-    super();
+    super()
   }
 
-  public async Login(req: any, res: any) {
-    return await this.LoginUser(req, res);
+  async _Login(req: NextApiRequest, res: NextApiResponse) {
+    return this.LoginUser(req,res)
   }
 
-  public async Create(req: any, res: any) {
-    return await this.createUser(req, res);
+  async _register(req: NextApiRequest, res: NextApiResponse) {
+    return this.createUser(req,res)
   }
 }

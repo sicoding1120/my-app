@@ -1,6 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { user } from "@/backends/types";
-import { PrismaClient } from "@prisma/client";
+/* eslint-disable react-hooks/rules-of-hooks */import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { useRouter } from "next/router";
 
@@ -26,7 +24,7 @@ const CreateIdRandom = () => {
 };
 
 export class userService {
-  public async LoginUser(req: any, res: any) {
+   async LoginUser(req: any, res: any) {
     const router = useRouter();
     const { password, name } = req.body;
     const user = await prisma.user.findUnique({
@@ -46,7 +44,7 @@ export class userService {
     }
   }
 
-  public async createUser(req: any, res: any) {
+  async createUser(req: any, res: any) {
     const { password, name } = req.body;
     if (!name || !password) {
       return;
@@ -55,7 +53,7 @@ export class userService {
 
       const id = CreateIdRandom();
 
-      const userApi: user = {
+      const userApi: any = {
         id: id,
         password: hashedPassword,
         name: name,
