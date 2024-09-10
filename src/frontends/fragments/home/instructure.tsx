@@ -41,7 +41,7 @@ const Instructor = () => {
           </Flex>
           <Box className="md:w-1/2 w-full h-full  flex justify-center items-center">
             <Image
-              src={"/TechfusionAcademy/assets/olther/img-content2.png"}
+              src={"/assets/olther/img-content2.png"}
               alt={""}
               width={1000}
               height={1000}

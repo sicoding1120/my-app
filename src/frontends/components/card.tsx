@@ -28,7 +28,7 @@ const CardElement: React.FC<CardElementProps> = ({
         <h2 className="text-2xl font-bold mb-2 text-color-c5 dark:text-color-c4">
           {title}
         </h2>
-        <p className="text-color-text-2 line-clamp-3">{detail}</p>
+        <p className="text-slate-500 line-clamp-3">{detail}</p>
       </div>
       <button className="hover:bg-color-c1 bg-color-c2 text-white mt-6 rounded p-2 px-6 hover:text-color-c5 transition-all">
         Learn More

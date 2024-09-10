@@ -56,11 +56,11 @@
                   "2": {
                       "data": [{
                               "title": "google",
-                              "leftIconUrl": "/TechfusionAcademy/assets/google.png"
+                              "leftIconUrl": "/assets/google.png"
                           },
                           {
                               "title": "Facebook",
-                              "leftIconUrl": "/TechfusionAcademy/assets/Facebook.png"
+                              "leftIconUrl": "/assets/Facebook.png"
                           }
                       ]
                   }
@@ -118,13 +118,7 @@
                           ]
                       },
                       "textAbout": [{
-                              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempore eiusmod tempor adipiscing elit"
-                          },
-                          {
-                              "text": "ut labore et dolore magna aliqua. Facilisis magna etiam tempor orci eu lobortis.eu lobortis etiam tempor orci"
-                          },
-                          {
-                              "text": "leo integer malesuada nunc vel risus commodo viverra maecenas .maecenas."
+                              "text": "Di era digital yang terus berkembang, keterampilan coding menjadi kunci untuk membuka berbagai peluang karier yang menjanjikan. MENTORIX hadir sebagai platform e-learning yang menyediakan kelas-kelas coding online berkualitas untuk membantu Anda mengembangkan keterampilan teknologi yang relevan dan up-to-date."
                           }
                       ],
                       "textFooter": [{
@@ -175,16 +169,16 @@
           "sponsor": {
               "dataName": "sponsor",
               "data": [{
-                      "urlLogo": "/TechfusionAcademy/assets/logo/logo1.png"
+                      "urlLogo": "/assets/logo/logo1.png"
                   },
                   {
-                      "urlLogo": "/TechfusionAcademy/assets/logo/logo2.png"
+                      "urlLogo": "/assets/logo/logo2.png"
                   },
                   {
-                      "urlLogo": "/TechfusionAcademy/assets/logo/logo3.png"
+                      "urlLogo": "/assets/logo/logo3.png"
                   },
                   {
-                      "urlLogo": "/TechfusionAcademy/assets/logo/logo4.png"
+                      "urlLogo": "/assets/logo/logo4.png"
                   }
               ]
           },
@@ -204,12 +198,12 @@
                                       "asideTopic": [{
                                           "isDecs": false,
                                           "title": "Intro To UI/UX Design",
-                                          "img": "/TechfusionAcademy/assets/class/uiux.png",
+                                          "img": "/assets/class/uiux.png",
                                           "price": 0
                                       }, {
                                           "isDecs": false,
                                           "title": "next to UI/UX Design",
-                                          "img": "/TechfusionAcademy/assets/class/uiux.png",
+                                          "img": "/assets/class/uiux.png",
                                           "price": 0
                                       }]
                                   }],
@@ -229,7 +223,7 @@
                                       "asideTopic": [{
                                           "isDecs": true,
                                           "title": "Coding at TECHFUSION Playground",
-                                          "img": "/TechfusionAcademy/assets/class/html.png",
+                                          "img": "/assets/class/html.png",
                                           "description": [{
                                               "title": "Recommended Before Starting the Course"
                                           }],
@@ -237,7 +231,7 @@
                                       }, {
                                           "isDecs": true,
                                           "title": "Beginner Web Development",
-                                          "img": "/TechfusionAcademy/assets/class/javascript.png",
+                                          "img": "/assets/class/javascript.png",
                                           "description": [{
                                               "title": "3 Class Prerequisites"
                                           }],

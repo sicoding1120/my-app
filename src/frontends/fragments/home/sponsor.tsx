@@ -9,7 +9,7 @@ const Sponsor = () => {
     <section className="w-full md:h-[50vh] h-[90vh] flex justify-center items-center md:mt-0 mt-24 md:px-14 px-4 dark:bg-color-c7">
       <Flex flexDirection={"column"} gap={8}>
         <Text className="md:text-5xl text-3xl text-center dark:text-color-c4">
-          Collaborates with 100+ Institutions
+          Sudah Berkolaborasi Dengan +32 Lembaga
         </Text>
         <Flex gap={4} className="text-center md:flex-row flex-col items-center">
           {dataRandom.id.sponsor.data.map((items, index) => (

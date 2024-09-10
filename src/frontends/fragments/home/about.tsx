@@ -10,14 +10,14 @@ const About = () => {
     <section className="w-full md:h-screen h-full flex justify-center items-center py-24 md:px-14 px-4">
       <Flex gap={24} flexDirection={"column"} className="w-full h-full">
         <Box>
-          <Flex flexDirection={"column"} gap={6}>
+          <Flex flexDirection={"column"} gap={12}>
             <Text className="md:text-5xl text-3xl text-center dark:text-color-c4">
-              More than just learning
+              About MENTORIX
             </Text>
             <Box>
               {dataRandom.id.Text.data.type.textAbout.map((items, index) => (
                 <Text
-                  className="md:text-lg text-sm text-center text-color-text-2"
+                  className="md:text-lg text-sm text-center text-slate-500 px-32"
                   key={index}
                 >
                   {items.text}
