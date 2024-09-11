@@ -106,7 +106,7 @@ export const Logo = () => {
     >
       <Image
       // isikan argument darkmode
-        src={DarkMode(  ) ? "/assets/logo/MENTORIX2.png" : "/assets/logo/MENTORIX.png"}
+        src={""}
         alt="logo"
         width={50}
         height={50}
@@ -128,7 +128,7 @@ export const LogoIcon = () => {
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        src={DarkMode() ? "/assets/logo/MENTORIX2.png" : "/assets/logo/MENTORIX.png"}
+        src={""}
         alt="logo"
         width={50}
         height={50}
