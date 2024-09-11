@@ -26,18 +26,17 @@ const About = () => {
             </Box>
           </Flex>
         </Box>
-        <Box className="w-full h-full ">
+        {/* <Box className="w-full h-full ">
           <Flex className="w-full h-full p-4 gap-14 justify-center flex-col md:flex-row">
             {DataCard.map((items) => (
               <CardElement
-                title={items.titleCard}
                 detail={items.detail}
                 key={items.id}
                 urlImage={items.urlImage}
               />
             ))}
           </Flex>
-        </Box>
+        </Box> */}
       </Flex>
     </section>
   );
