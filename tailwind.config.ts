@@ -1,4 +1,6 @@
 import type { Config } from 'tailwindcss'
+import { nextui } from "@nextui-org/react";
+
 
 const config: Config = {
   content: [
@@ -8,14 +10,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        color: {
+          coursesTopic: "#f8f8f8",
+        },
+      },
+      animation: {
+        move: "move 5s linear infinite",
+      },
+      keyframes: {
+        move: {
+          "0%": { transform: "translateX(-200px)" },
+          "100%": { transform: "translateX(200px)" },
+        },
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), nextui()],
   daisyui: {
     themes: false, // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
     darkTheme: "light", // name of one of the included themes for dark mode
