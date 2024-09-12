@@ -11,41 +11,5 @@ export default async function Class(req: NextApiRequest, res: NextApiResponse) {
       if (!classes) {
         res.status(404).json({ message: "No classes found" });
       }
-    case "POST": 
-      const {
-      id_credential,
-      title,
-      Kos,
-      lesson,
-      time,
-      headerTitle,
-      desc_cover,
-      desc,
-      kategori,
-      isDiscount,
-      url,
-      aboutClass,
-      isCertivicate,
-    } = req.body;
-
-    const newClass = await prisma.class.create({
-      data: {
-        id_credential,
-        title,
-        Kos,
-        lesson,
-        time,
-        headerTitle,
-        desc_cover,
-        desc,
-        kategori,
-        isDiscount,
-        url,
-        aboutClass,
-        isCertivicate,
-      },
-    });
-    res.status(201).json(newClass);
-      
   }
 }
