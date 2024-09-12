@@ -9,7 +9,7 @@ import Testimonial from "@/frontends/fragments/home/testimonial.";
 
 const Home = () => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 bg-slate-900">
       <HeroSection />
       <Sponsor />
       <About />

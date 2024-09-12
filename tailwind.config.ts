@@ -1,6 +1,4 @@
 import type { Config } from 'tailwindcss'
-import { nextui } from "@nextui-org/react";
-
 
 const config: Config = {
   content: [
@@ -26,7 +24,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("daisyui"), nextui()],
+  plugins: [require("daisyui")],
   daisyui: {
     themes: false, // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
     darkTheme: "light", // name of one of the included themes for dark mode

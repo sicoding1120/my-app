@@ -82,7 +82,7 @@ export function SidebarDemo() {
                 href: "#",
                 icon: (
                   <Image
-                    src=""
+                    src="/assets/logo/favicon.png"
                     className="h-7 w-7 flex-shrink-0 rounded-full"
                     width={50}
                     height={50}
@@ -106,7 +106,7 @@ export const Logo = () => {
     >
       <Image
       // isikan argument darkmode
-        src={""}
+        src={"/assets/logo/MENTORIX2.png"}
         alt="logo"
         width={50}
         height={50}
@@ -128,7 +128,7 @@ export const LogoIcon = () => {
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        src={""}
+        src={"/assets/logo/MENTORIX2.png"}
         alt="logo"
         width={50}
         height={50}
