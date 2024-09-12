@@ -1,4 +1,4 @@
-import { Blog } from "@/backends/types";
+import { Blog } from "@/backends/interfaces";
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 

@@ -41,14 +41,18 @@ export interface ClassDetail {
 }
 
 export interface Class {
-  id_credential: number;
-  title: string;
-  Kos: string;
-  headerTitle: string;
-  kategori: string[];
-  isDiscount: boolean;
-  url: string;
-  aboutClass: string[];
-  isCertivicate: boolean;
-  classDetail?: ClassDetail;
+  id_credential: number; 
+  title: string; 
+  Kos: string; 
+  lesson: number; 
+  time: number; 
+  headerTitle: string; 
+  desc_cover: string; 
+  desc: string; 
+  kategori: string[]; 
+  isDiscount: boolean; 
+  url: string; 
+  aboutClass: string[]; 
+  isCertivicate: boolean; 
+  classDetail?: ClassDetail; 
 }

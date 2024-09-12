@@ -48,12 +48,16 @@ model Blog {
   userId   Int
   views    Int
 }
-
 model Class {
   id_credential Int          @unique
   title         String
   Kos           String
+  lesson        Int
+  time          Int
   headerTitle   String
+  desc_cover    String
+  progress      Int
+  desc          String
   kategori      String[]
   isDiscount    Boolean
   url           String       @unique
