@@ -9,7 +9,7 @@ export class classService {
     
   async _getClass() {
     const classes = await prisma.class.findMany();
-    return Response._getSuccess(classes);
+    return Response._getSuccess(classes as never);
     }
     
 
