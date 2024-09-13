@@ -1,6 +1,6 @@
 import React from "react";
 import { Kanit } from "next/font/google";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import Home from "@/frontends/templates/home";
 
 const kanit = Kanit({
@@ -9,8 +9,8 @@ const kanit = Kanit({
 });
 
 const Index = () => {
-  const { pathname } = useRouter();
-  console.log(pathname);
+  // const { pathname } = useRouter();
+  // console.log(pathname);
   return (
     <main className={`${kanit.className} dark:bg-color-c7 bg-color-c4`}>
       <Home />

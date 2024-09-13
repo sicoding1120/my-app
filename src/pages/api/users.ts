@@ -3,7 +3,7 @@
 import { PrismaClient } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcryptjs";
-import { UserType } from "@/backends/types";
+import { UserType } from "@/backends/interfaces";
 
 const prisma = new PrismaClient();
 // const user = new User();
@@ -46,7 +46,7 @@ export default async function handler(
         }
       case "POST":
         // await user.Create(req, res)
-        const { name, password,} = req.body;
+        const { name, password } = req.body;
         if (!name || !password) {
           return;
         } else {
@@ -57,7 +57,7 @@ export default async function handler(
           const newUser: UserType = {
             id: id,
             name: name,
-            password : hashedPassword,
+            password: hashedPassword,
           };
           const sendUser = await prisma.user.create({ data: newUser } as never);
           res.status(200).json(sendUser);

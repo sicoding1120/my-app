@@ -1,14 +1,5 @@
-y/*
-  Warnings:
-
-  - You are about to drop the `user` table. If the table is not empty, all the data it contains will be lost.
-
-*/
 -- CreateEnum
 CREATE TYPE "UserRole" AS ENUM ('STUDENT', 'MENTOR', 'NONROLE');
-
--- DropTable
-DROP TABLE "user";
 
 -- CreateTable
 CREATE TABLE "User" (
@@ -46,7 +37,11 @@ CREATE TABLE "Class" (
     "id_credential" INTEGER NOT NULL,
     "title" TEXT NOT NULL,
     "Kos" TEXT NOT NULL,
+    "lesson" INTEGER NOT NULL,
+    "time" INTEGER NOT NULL,
     "headerTitle" TEXT NOT NULL,
+    "desc_cover" TEXT NOT NULL,
+    "desc" TEXT NOT NULL,
     "kategori" TEXT[],
     "isDiscount" BOOLEAN NOT NULL,
     "url" TEXT NOT NULL,

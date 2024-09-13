@@ -1,44 +1,55 @@
-import Link from "next/link";
 import React from "react";
-import { FaFilter, FaSearch } from "react-icons/fa";
-import { MdWindow } from "react-icons/md";
 import CardDemo from "./card";
+import { Tabs, Tab } from "@nextui-org/react";
+import { useIcons } from "@/hook/useIcons";
+import { useData } from "@/hook/useData";
+import PaginationElement from "./pagination";
 import { useRouter } from "next/router";
 
 const Class = () => {
+  const { icons } = useIcons();
+  const { menu } = useData();
   const router = useRouter();
-  const { q, page, pageSize } = router.query;
+  const [page,setPage] = React.useState(1)
+  const [category, setCategory] = React.useState("All categories")
+  // const { q, page, pageSize } = router.query;
   return (
     <main className="w-full h-full">
-      <section className="w-full h-1/3 bg-white flex flex-col justify-between items-center">
-        <div className="w-full h-full flex justify-center items-center">
+      <section className="w-full h-1/3 bg-white flex flex-col gap-6 justify-between items-center">
+        <div className="w-full h-2/3 py-8 flex justify-center items-center">
           <h2 className="text-6xl font-semibold ">Courses</h2>
         </div>
-        <div className="w-full h-24 flex justify-between items-center px-16">
+        <div className="w-full flex justify-between items-center px-16">
           <div className="flex gap-3 justify-center items-center ">
-            <div className=" border-slate-200 h-6 flex  items-center">
-              <FaSearch />
+            <div className=" border-slate-200 flex  items-center">
+              <icons.search />
             </div>
           </div>
-          <nav className="flex gap-8 capitalize font-semibold">
-            <Link href={"/courses?q=class&page=1&pageSize=15"} className="hover:underline ">
-              class
-            </Link>
-            <Link href={"/courses/bootcamp"} className="hover:underline">
-              bootcamp
-            </Link>
-            <Link href={"/courses/quiz"} className="hover:underline ">
-              Quiz
-            </Link>
-          </nav>
+          <Tabs
+            variant={"underlined"}
+            aria-label="Tabs variants"
+            onSelectionChange={(title) => {
+              setCategory(title as string);
+              setPage(1)
+              router.push(`?page=${page - page + 1}&pageSize=10&category=${title}`);
+            }}
+          >
+            {menu.courses.map((items, index) => (
+              <Tab
+                key={items.title}
+                title={items.title}
+                className="text-md font-semibold"
+              />
+            ))}
+          </Tabs>
           <div className="flex gap-8 ">
             <div className="flex ">
-              <MdWindow />
+              <icons.window size={20} />
             </div>
           </div>
         </div>
       </section>
-      <section className="w-full h-full bg-color-coursesTopic p-16">
+      <section className="w-full h-full bg-color-coursesTopic flex flex-col gap-16 items-center p-8">
         <div className="w-full h-full grid grid-cols-4 gap-8">
           <CardDemo />
           <CardDemo />
@@ -49,6 +60,13 @@ const Class = () => {
           <CardDemo />
           <CardDemo />
         </div>
+        <PaginationElement
+          page={page}
+          onchange={(newpage: number) => {
+            setPage(newpage);
+            router.push(`?page=${newpage}&pageSize=10&category=${category}`);
+          }}
+        />
       </section>
     </main>
   );
