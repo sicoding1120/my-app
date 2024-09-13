@@ -1,5 +1,6 @@
 import { useIcons } from "@/hook/useIcons";
 import React from "react";
+import CardDemo from "./card";
 
 const DetailClasses = ({ title }: { title: string | any }) => {
   const { icons } = useIcons();
@@ -30,7 +31,7 @@ const DetailClasses = ({ title }: { title: string | any }) => {
           <button className="btn w-1/4 text-lg capitalize">ikuti kelas</button>
         </div>
       </section>
-      <section className="w-full h-screen flex gap-8 px-16">
+      <section className="w-full h-full flex gap-8 px-16">
         <div className="w-2/3 h-full  py-8 flex flex-col gap-8 pr-6">
           <div className="w-full flex flex-col gap-6">
             <h4 className="text-2xl font-bold capitalize">tentang kelas ini</h4>
@@ -58,7 +59,7 @@ const DetailClasses = ({ title }: { title: string | any }) => {
             <h4 className="text-2xl font-bold capitalize">
               apa yang akan di pelajari ?
             </h4>
-            <ul className="flex flex-col gap-4 pl-6">
+            <ul className="flex flex-col gap-3 pl-6 list-disc">
               <li>Struktur Dokumen HTML</li>
               <li>Struktur Dokumen HTML</li>
               <li>Struktur Dokumen HTML</li>
@@ -66,14 +67,108 @@ const DetailClasses = ({ title }: { title: string | any }) => {
               <li>Struktur Dokumen HTML</li>
             </ul>
           </div>
-          <div className="flex flex-col gap-6 px-4 py-2 border border-slate-200 rounded-lg h-screen ">
-            <h3 className="text-lg font-semibold capitalize ">materi</h3>
-            <div className="flex justify-between gap-6"></div>
+          <div className="flex flex-col gap-2 px-4 py-2 border border-slate-200 rounded-lg h-full ">
+            <h3 className="text-2xl font-semibold capitalize ">materi</h3>
+            <div className="flex flex-col gap-1">
+              <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
+                <ul className="list-disc">
+                  <li className="font-semibold">Stasfngqdfjndsfwehjrbgfdsgw</li>
+                </ul>
+              </div>
+              <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
+                <ul className="list-disc">
+                  <li className="font-semibold">Stasfngqdfjndsfwehjrbgfdsgw</li>
+                </ul>
+              </div>
+              <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
+                <ul className="list-disc">
+                  <li className="font-semibold">Stasfngqdfjndsfwehjrbgfdsgw</li>
+                </ul>
+              </div>
+              <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
+                <ul className="list-disc">
+                  <li className="font-semibold">Stasfngqdfjndsfwehjrbgfdsgw</li>
+                </ul>
+              </div>
+              <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
+                <ul className="list-disc">
+                  <li className="font-semibold">Stasfngqdfjndsfwehjrbgfdsgw</li>
+                </ul>
+              </div>
+              <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
+                <ul className="list-disc">
+                  <li className="font-semibold">Stasfngqdfjndsfwehjrbgfdsgw</li>
+                </ul>
+              </div>
+              <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
+                <ul className="list-disc">
+                  <li className="font-semibold">Stasfngqdfjndsfwehjrbgfdsgw</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="w-full flex flex-col gap-6">
+            <h4 className="text-2xl font-bold capitalize">persiapan kelas</h4>
+            <ul className="flex flex-col gap-3 pl-6 list-disc">
+              <li>Struktur Dokumen HTML</li>
+              <li>Struktur Dokumen HTML</li>
+              <li>Struktur Dokumen HTML</li>
+              <li>Struktur Dokumen HTML</li>
+              <li>Struktur Dokumen HTML</li>
+            </ul>
           </div>
         </div>
         <div className="w-1/3 h-[97vh] sticky top-2 px-6 py-2 flex flex-col gap-5">
-          <div className="w-full h-1/2 border-2 border-slate-200 rounded-lg"></div>
-          <div className="w-full h-1/2 border-2 border-slate-200 rounded-lg"></div>
+          <div className="w-full h-1/2 border-2 border-slate-200 rounded-lg p-4">
+            <h3 className="text-2xl">detail kelas</h3>
+            <div className="w-full h-[70px] bg-red-500"></div>
+          </div>
+          <div className="w-full h-full border-2 border-slate-200 rounded-lg">
+            <div className="flex flex-col gap-2 px-4 py-2 border border-slate-200 rounded-lg h-full ">
+              <h3 className="text-2xl font-semibold capitalize ">materi</h3>
+              <div className="flex flex-col gap-1">
+                <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
+                  <ul className="list-disc">
+                    <li className="font-semibold">
+                      Stasfngqdfjndsfwehjrbgfdsgw
+                    </li>
+                  </ul>
+                </div>
+                <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
+                  <ul className="list-disc">
+                    <li className="font-semibold">
+                      Stasfngqdfjndsfwehjrbgfdsgw
+                    </li>
+                  </ul>
+                </div>
+                <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
+                  <ul className="list-disc">
+                    <li className="font-semibold">
+                      Stasfngqdfjndsfwehjrbgfdsgw
+                    </li>
+                  </ul>
+                </div>
+                <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
+                  <ul className="list-disc">
+                    <li className="font-semibold">
+                      Stasfngqdfjndsfwehjrbgfdsgw
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="w-full h-full px-16 py-14 flex flex-col gap-14">
+        <h2 className="text-4xl font-bold capitalize">
+          Recommendasi kelas untuk kamu
+        </h2>
+        <div className="grid grid-cols-4 gap-4">
+          <CardDemo />
+          <CardDemo />
+          <CardDemo />
+          <CardDemo />
         </div>
       </section>
     </main>

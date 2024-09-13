@@ -20,24 +20,34 @@ enum UserRole {
   NONROLE
 }
 
+enum Nilai {
+  A
+  B
+  C
+  D
+}
+
 model User {
-  id       Int      @id @default(autoincrement())
-  name     String?
-  password String   @unique
-  Profile  Profile?
-  blog     Blog[]
-  mentor   Mentor?
+  id        String   @id @unique @default(uuid())
+  name      String?
+  password  String   @unique
+  classId   Int
+  Profile   Profile? @relation()
+  profileId String   @unique @default(uuid())
+  blog      Blog[]
+  mentor    Mentor?
+  Class     Class[]  @relation()
 }
 
 model Profile {
+  id_credential String   @id @unique @default(uuid())
   email         String   @unique
-  id_credential Int      @unique
-  role          UserRole @default(NONROLE)
+  role          UserRole @default(STUDENT)
   user          User?    @relation(fields: [id_credential], references: [id])
 }
 
 model Blog {
-  id       Int      @id @unique @default(autoincrement())
+  id       String   @id @unique @default(uuid())
   title    String
   subTitle String
   content  String
@@ -45,42 +55,45 @@ model Blog {
   date     DateTime
   kategori String[]
   user     User?    @relation(fields: [userId], references: [id])
-  userId   Int
+  userId   String   @default(uuid())
   views    Int
 }
+
 model Class {
-  id_credential Int          @unique
-  title         String
-  Kos           String
-  lesson        Int
-  time          Int
-  headerTitle   String
-  desc_cover    String
-  progress      Int
-  desc          String
-  kategori      String[]
-  isDiscount    Boolean
-  url           String       @unique
-  aboutClass    String[]
-  isCertivicate Boolean
-  classDetail   ClassDetail?
+  id_credential    String      @id @unique @default(uuid())
+  title            String
+  price            Int
+  isDiscount       Boolean
+  DiscountPrice    Int
+  difficultyLevel  String
+  lesson           Int
+  mentorixPoin     Int
+  time             Int
+  progress         Int
+  authorTeams      String
+  aboutClass       String
+  StepClass        String[]
+  materiListClass  MateriList[]
+  prepareToLearn   String[]
+  nilai            Nilai?      @default(D)
+  isCertivicate    Boolean
+  urlCertivication String
+  User             User[]
 }
 
-model ClassDetail {
-  material Int
-  point    Int
-  mentor   Mentor?
-  class    Class?  @relation(fields: [class_id], references: [id_credential])
-  class_id Int     @unique
+model MateriList {
+  id       Int    @unique
+  title    String
+  Progress Int
+  class    Class? @relation(fields: [classId], references: [id_credential])
+  classId  String
 }
 
 model Mentor {
-  id            String       @unique
+  id            String   @id @unique @default(uuid())
   takeOffice_at DateTime
   expired_at    DateTime
   img           String
-  user          User         @relation(fields: [userId], references: [id])
-  userId        Int          @unique
-  classDetail   ClassDetail? @relation(fields: [class_id], references: [class_id])
-  class_id      Int          @unique
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String   @unique @default(uuid())
 }
