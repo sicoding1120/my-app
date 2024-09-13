@@ -6,7 +6,7 @@ import dataRandom from "@/data/dataRandom.json";
 
 const Instructor = () => {
   return (
-    <section className="bg-bg2 bg-cover bg-center bg-no-repeat md:h-screen h-screen py-14">
+    <section className="bg-bg2 bg-cover bg-center bg-no-repeat md:h-screen h-screen py-14 px-24">
       <Flex className="w-full h-full">
         <Box className="w-full h-full flex flex-col-reverse md:flex-row md:px-14 px-4 gap-8">
           <Flex
@@ -18,7 +18,7 @@ const Instructor = () => {
                 {dataRandom.id.Text.data.type.Text[2].map((items, index) => (
                   <p
                     key={index}
-                    className="font-semibold md:text-6xl text-4xl text-center md:text-start dark:text-color-c4"
+                    className="font-semibold md:text-6xl text-xl text-center md:text-start dark:text-color-c4"
                   >
                     {items.text}
                   </p>
@@ -34,8 +34,8 @@ const Instructor = () => {
                   </p>
                 ))}
               </Flex>
-              <button className="btn md:w-[218px] md:h-[40px] h-[40px] capitalize bg-color-c2 text-white hover:bg-color-c1 hover:text-color-c5 border-none shadow-lg">
-                join for free
+              <button className="btn btn-success md:w-[218px] md:h-[40px] h-[40px] capitalize bg-color-c2 text-white hover:bg-color-c1 hover:text-color-c5 border-none shadow-lg">
+                Bergabung
               </button>
             </Box>
           </Flex>

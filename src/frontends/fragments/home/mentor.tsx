@@ -20,17 +20,17 @@ const Mentor = () => {
       <Box className="flex flex-col w-full h-full gap-24">
         <Box className="w-full flex flex-col gap-4 md:flex-row items-center md:justify-between">
           <Text className="md:text-6xl text-3xl dark:text-color-c4">
-            Search your mentor.
+            Temukan Mentor Favorit Kamu!
           </Text>
           <Box className="flex gap-4">
             <Circle
-              className="bg-color-c1 size-14 text-black hover:bg-color-c2 hover:text-white"
+              className="bg-green-500 size-14 text-white"
               onClick={prevMentor}
             >
               <IoIosArrowBack size={30} />
             </Circle>
             <Circle
-              className="bg-color-c2 size-14 text-white hover:bg-color-c1 hover:text-black"
+              className="bg-green-500 size-14 text-white"
               onClick={nextMentor}
             >
               <IoIosArrowForward size={30} />
