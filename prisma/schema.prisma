@@ -64,7 +64,7 @@ model Class {
   title            String
   price            Int
   isDiscount       Boolean
-  DiscountPrice    Int
+  discountPrice    Int
   difficultyLevel  String
   lesson           Int
   mentorixPoin     Int
