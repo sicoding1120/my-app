@@ -9,7 +9,7 @@ export class blogService {
   async _getBlog(res: NextApiResponse) {
     const blog = await prisma.blog.findMany();
     if (blog) {
-      return res.status(200).json(Response._getSuccess(blog));
+      return res.status(200).json(Response._getSuccess(blog as never));
     } else {
       return res.status(404).json(Response._getFailure(blog));
     }
@@ -19,7 +19,7 @@ export class blogService {
     const { id } = req.body;
     const blog = await prisma.blog.findUnique({ where: { id: id } });
     if (blog) {
-      return res.status(200).json(Response._getByIdSuccess(blog));
+      return res.status(200).json(Response._getByIdSuccess(blog as never));
     } else {
       return res.status(404).json(Response._getByIdFailure(id));
     }

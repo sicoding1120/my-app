@@ -1,6 +1,8 @@
 import { useIcons } from "@/hook/useIcons";
 import React from "react";
 import CardDemo from "./card";
+import { GiRank1 } from "react-icons/gi";
+import { IoMedalOutline } from "react-icons/io5";
 
 const DetailClasses = ({ title }: { title: string | any }) => {
   const { icons } = useIcons();
@@ -67,46 +69,6 @@ const DetailClasses = ({ title }: { title: string | any }) => {
               <li>Struktur Dokumen HTML</li>
             </ul>
           </div>
-          <div className="flex flex-col gap-2 px-4 py-2 border border-slate-200 rounded-lg h-full ">
-            <h3 className="text-2xl font-semibold capitalize ">materi</h3>
-            <div className="flex flex-col gap-1">
-              <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
-                <ul className="list-disc">
-                  <li className="font-semibold">Stasfngqdfjndsfwehjrbgfdsgw</li>
-                </ul>
-              </div>
-              <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
-                <ul className="list-disc">
-                  <li className="font-semibold">Stasfngqdfjndsfwehjrbgfdsgw</li>
-                </ul>
-              </div>
-              <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
-                <ul className="list-disc">
-                  <li className="font-semibold">Stasfngqdfjndsfwehjrbgfdsgw</li>
-                </ul>
-              </div>
-              <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
-                <ul className="list-disc">
-                  <li className="font-semibold">Stasfngqdfjndsfwehjrbgfdsgw</li>
-                </ul>
-              </div>
-              <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
-                <ul className="list-disc">
-                  <li className="font-semibold">Stasfngqdfjndsfwehjrbgfdsgw</li>
-                </ul>
-              </div>
-              <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
-                <ul className="list-disc">
-                  <li className="font-semibold">Stasfngqdfjndsfwehjrbgfdsgw</li>
-                </ul>
-              </div>
-              <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
-                <ul className="list-disc">
-                  <li className="font-semibold">Stasfngqdfjndsfwehjrbgfdsgw</li>
-                </ul>
-              </div>
-            </div>
-          </div>
           <div className="w-full flex flex-col gap-6">
             <h4 className="text-2xl font-bold capitalize">persiapan kelas</h4>
             <ul className="flex flex-col gap-3 pl-6 list-disc">
@@ -119,9 +81,25 @@ const DetailClasses = ({ title }: { title: string | any }) => {
           </div>
         </div>
         <div className="w-1/3 h-[97vh] sticky top-2 px-6 py-2 flex flex-col gap-5">
-          <div className="w-full h-1/2 border-2 border-slate-200 rounded-lg p-4">
+          <div className="w-full h-full border-2 border-slate-200 rounded-lg p-4 flex flex-col gap-4 overflow-scroll scrollbar-hide">
+            <h3 className="text-2xl font-bold capitalize">detail kelas</h3>
+            <div className="w-full h-[60px] flex gap-4">
+              <icons.book className="w-8 h-8" />
+            </div>
+            <div className="w-full h-[60px] flex gap-4">
+              <GiRank1 className="w-8 h-8 font-bold" />
+            </div>
+            <div className="w-full h-[60px] flex gap-4">
+              <IoMedalOutline  className="w-8 h-8"/>
+            </div>
+            <div className="w-full h-[60px] flex gap-4">
+              <icons.book className="w-8 h-8" />
+            </div>
+          </div>
+          <div className="w-full h-full border-2 border-slate-200 rounded-lg p-4 flex flex-col gap-4">
             <h3 className="text-2xl">detail kelas</h3>
-            <div className="w-full h-[70px] bg-red-500"></div>
+            <div className="w-full h-[60px] bg-red-500 "></div>
+            <div className="w-full h-[60px] bg-red-500 "></div>
           </div>
           <div className="w-full h-full border-2 border-slate-200 rounded-lg">
             <div className="flex flex-col gap-2 px-4 py-2 border border-slate-200 rounded-lg h-full ">
