@@ -1,261 +1,94 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
-import Image from "next/image";
+import {
+  IconBrandFacebookFilled,
+  IconBrandGoogle,
+  IconBrandGoogleFilled,
+} from "@tabler/icons-react";
 import Link from "next/link";
-import { Kanit, Inter } from "next/font/google";
-import { Circle } from "@chakra-ui/react";
-import InputNormal from "@/frontends/components/inputNormal";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React from "react";
 
-const kanit = Kanit({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600"],
-});
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600"],
-});
-const validOfId = [
-  ...Array.from({ length: 9 }, (_, i) => (i + 1).toString()), // Angka 1 sampai 9
-  ...Array.from({ length: 8 }, (_, i) => String.fromCharCode(97 + i)), // Huruf a sampai h
-];
-
-const Authentification = () => {
-  const router = useRouter();
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [count, setCount] = useState("");
-  const [register, setIsRegister] = useState(false);
-  const [validasiName, setValidasiName] = useState(false);
-  const [validasiPassword, setValidasiPassword] = useState(false);
-
-  const createIdRandom = () => {
-    // Tentukan panjang acak antara 3 dan 5
-    const idLength = Math.floor(Math.random() * (16 - 3 + 1)) + 3;
-    let id = "";
-
-    // Buat ID dengan panjang yang ditentukan
-    for (let i = 0; i < idLength; i++) {
-      const randomIndex = Math.floor(Math.random() * validOfId.length);
-      id += validOfId[randomIndex];
-    }
-
-    setCount(id);
-    return id;
-  };
-
-  // Contoh penggunaan
-  const handleSubmit = async (event: any) => {
-    event.preventDefault();
-    if (!count) {
-      const newId = createIdRandom();
-      setCount(newId);
-      toast.warning("server error harap ulangi langkah tadi");
-    } else {
-      if (!name || !password) {
-        toast("nama atau password harus di isi");
-      } else {
-        setIsRegister(!false);
-        toast.success("akun anda terbuat");
-        localStorage.setItem(
-          `user_@${name}`,
-          JSON.stringify([{ name, password, register, count }])
-        );
-        setName("");
-        setPassword("");
-      }
-    }
-  };
-  const handleUser = (event: any) => {
-    event.preventDefault();
-    const nameU = localStorage.getItem(`user_@${name}`);
-    let file;
-    if (nameU) {
-      file = JSON.parse(nameU as never);
-    } else {
-      file = { data: [], isLoggin: false };
-    }
-    if (!file.isLoggin) {
-      if (!file.data) {
-        file.data = [];
-      }
-      file.data.push({ name, password });
-      file.isLoggin = true;
-      localStorage.setItem(`user_@${name}`, JSON.stringify(file));
-    }
-    if (file) {
-      if (!localStorage.getItem(`user_@${name}`)) {
-        localStorage.setItem(
-          `user_@${name}`,
-          JSON.stringify({ file, isloggin: true })
-        );
-      }
-      const isloggin = true;
-      sessionStorage.setItem(`isLogin`, JSON.stringify(isloggin));
-      sessionStorage.setItem("user", JSON.stringify(name));
-      router.push(`/e/account/me/@${name}/dashboard`);
-      toast.success("berhasil login");
-    }
-  };
-
+const Register = () => {
   return (
-    <section className={`${kanit.className} w-full h-screen md:bg-white flex`}>
-      <div
-        className={`md:w-2/5 w-full h-full px-8 py-14 bg-bgLogin3 md:bg-bgLogin4`}
+    <div className="w-full h-screen skeleton flex justify-center items-center">
+      <form
+        action=""
+        className="bg-slate-200 p-8 rounded-xl flex flex-col gap-6 shadow-lg"
       >
-        <div className="w-full h-full flex flex-col justify-center md:gap-14 gap-8">
-          <div className="flex flex-col gap-4">
-            <div className="w-full h-12 justify-start flex md:hidden">
-              <Link
-                href={"/"}
-                className="w-12 h-12 bg-white rounded-md cursor-pointer"
+        <h1 className="text-4xl font-bold">Register</h1>
+        <p className="text-slate-500">
+          Daftarkan akun anda untuk memulai <br />proses belajarmu di MENTORIX!
+        </p>
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
+            <label className="input input-bordered flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                className="h-4 w-4 opacity-70"
               >
-                <Image
-                  src={"/assets/logo/logoWeb.png"}
-                  alt={""}
-                  width={100}
-                  height={100}
+                <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
+                <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
+              </svg>
+              <input type="text" className="grow" placeholder="Email" />
+            </label>
+            <label className="input input-bordered flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                className="h-4 w-4 opacity-70"
+              >
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
+              </svg>
+              <input type="text" className="grow" placeholder="Username" />
+            </label>
+            <label className="input input-bordered flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                className="h-4 w-4 opacity-70"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+                  clipRule="evenodd"
                 />
-              </Link>
-            </div>
-
-            <div className="flex flex-col">
-              <p className={"md:text-4xl md:text-black text-white text-2xl"}>
-                Register for a new account
-              </p>
-              <p className="md:text-md text-sm md:text-color-text-2 text-white/70">
-                Welcome back, select method to login
-              </p>
+              </svg>
+              <input type="password" className="grow" placeholder="Password" />
+            </label>
+          </div>
+          <div className="w-full flex items-center gap-12">
+            <div className="flex items-center gap-2">
+              <input type="checkbox" name="" id="" />
+              <p className="text-sm">Saya setuju dengan semua syarat dan ketentuan</p>
             </div>
           </div>
-          <div className="flex flex-col gap-8">
-            <form
-              action=""
-              onSubmit={handleSubmit}
-            >
-              <div className="flex flex-col gap-4">
-                <InputNormal
-                  classname={
-                    name === "" && validasiName
-                      ? "input-error"
-                      : name !== "" && validasiName
-                      ? "input-success"
-                      : "input-bordered"
-                  }
-                  type={"text"}
-                  onchange={(e: any) => setName(e.target.value)}
-                  onclick={() => setValidasiName(true)}
-                  value={name}
-                >
-                  d
-                </InputNormal>
-                {name === "" && validasiName
-                  ? "colom nama harus diisi"
-                  : name !== "" && validasiName
-                  ? " "
-                  : " colom nama harus diisi"}
-                <InputNormal
-                  classname={
-                    password === "" && validasiPassword
-                      ? "input-error"
-                      : password !== "" && validasiPassword
-                      ? password.length > 8
-                        ? "input-success"
-                        : "input-warning"
-                      : "input-bordered"
-                  }
-                  onclick={() => setValidasiPassword(true)}
-                  type={"password"}
-                  onchange={(e: any) => {
-                    setPassword(e.target.value);
-                  }}
-                  value={password}
-                >
-                  d
-                </InputNormal>
-                {password === "" && validasiPassword
-                  ? "colom password harus diisi"
-                  : password !== "" && validasiPassword
-                  ? password.length > 7
-                    ? ""
-                    : "password harus lebih dari 7 karakter"
-                  : ""}
-              </div>
-            </form>
-            <div className="w-full flex flex-col gap-4 text-center">
-              <button
-                className="btn w-full bg-bgButton bg-cover  text-white"
-                type="submit"
-                onClick={handleSubmit}
-              >
-                register
+          <button className="btn btn-success text-white">Register</button>
+          <div className="flex flex-col justify-center items-center gap-4">
+            <p>Daftar Dengan</p>
+            <div className="flex gap-4">
+              <button className="btn btn-white">
+                <IconBrandGoogleFilled /> Google
               </button>
-              <div className="md:text-color-text-2 text-white/70 flex gap-2 justify-center">
-                Do you have an account?
-                <Link
-                  href={"/auth/login"}
-                  className="text-blue-500 cursor-pointer"
-                >
-                  Log in
-                </Link>
-              </div>
+              <button className="btn btn-white">
+                <IconBrandFacebookFilled /> Facebook
+              </button>
             </div>
+            <p className="text-sm">
+              Sudah punya akun?{" "}
+              <Link
+                href={"/auth/login"}
+                className="font-semibold text-blue-500 text-sm"
+              >
+                Login
+              </Link>
+            </p>
           </div>
         </div>
-      </div>
-      {/* <RightSection query={} /> */}
-    </section>
+      </form>
+    </div>
   );
 };
 
-const RightSection = ({ query }: { query: any }) => (
-  <div
-    className={`md:w-3/5 hidden md:block h-full ${
-      query === "register" ? "bg-bgLogin2" : "bg-bgLogin"
-    } bg-no-repeat bg-cover p-4 pl-20`}
-  >
-    <div className=" w-full h-full flex flex-col p-4 gap-5">
-      <div className="w-full h-16 justify-end flex">
-        <Link
-          href={"/"}
-          className="w-16 h-16 bg-white rounded-md cursor-pointer"
-        >
-          <Image
-            src={"/TechfusionAcademy/assets/logoWeb.png"}
-            alt={""}
-            width={100}
-            height={100}
-          />
-        </Link>
-      </div>
-      <div className="w-full h-full text-white p-4 flex justify-center items-center">
-        <div className="flex flex-col text-center gap-4 bg-gray-900/70 p-8 rounded-lg">
-          <p className={`text-3xl`}>
-            {query === "register" ? "Join us Buddy" : "Welcome Back Buddy"}
-          </p>
-          <p className="flex flex-col ">
-            To get all the interesting features and many
-            <span>courses that can be accessed</span>
-          </p>
-        </div>
-      </div>
-      <div className="w-full h-24  flex justify-center items-end gap-3">
-        <Link href={"/auth/login"}>
-          <Circle
-            size={4}
-            className={`${query === "login" ? "bg-white" : " bg-white/30"}`}
-          ></Circle>
-        </Link>
-        <Link href={"/auth/register"}>
-          <Circle
-            size={4}
-            className={`${query === "login" ? "bg-white/40" : " bg-white"}`}
-          ></Circle>
-        </Link>
-      </div>
-    </div>
-  </div>
-);
-
-export default Authentification;
+export default Register;
