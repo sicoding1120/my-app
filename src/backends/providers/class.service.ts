@@ -11,12 +11,7 @@ export class classService {
     error: any
   ) {
     const classes = await prisma.class.findMany({
-      include: {
-        participants: false,
-        mentors: false,
-        Image: false,
-        ulasan: false,
-      },
+    
     });
     res.status(200).json(Response._getSuccess(classes as never));
     if (req.statusCode === 404) {
