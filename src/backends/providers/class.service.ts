@@ -282,11 +282,11 @@ export class classService {
     const deleteMentors = await prisma.class.update({
       where: { id_credential: req.body.where },
       data: {
-        participants: {
-          disconnect: req.body.participants.map((id_user: string) => ({
-            id: id_user,
-          })),
-        },
+        // participants: {
+        //   disconnect: req.body.participants.map((id_user: string) => ({
+        //     id: id_user,
+        //   })),
+        // },
       },
     });
     res.status(200).json(Response._deleteDataSuccess(deleteMentors as never));
