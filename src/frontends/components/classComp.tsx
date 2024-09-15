@@ -1,18 +1,21 @@
 import React from "react";
 import CardDemo from "./card";
+import useSWR from "swr";
 import { Tabs, Tab } from "@nextui-org/react";
 import { useIcons } from "@/hook/useIcons";
 import { useData } from "@/hook/useData";
 import PaginationElement from "./pagination";
 import { useRouter } from "next/router";
 
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
 const Class = () => {
   const { icons } = useIcons();
   const { menu } = useData();
+  const { data, error, isLoading } = useSWR("/api/class", fetcher);
   const router = useRouter();
-  const [page,setPage] = React.useState(1)
-  const [category, setCategory] = React.useState("All categories")
-  // const { q, page, pageSize } = router.query;
+  const [page, setPage] = React.useState(1);
+  const [category, setCategory] = React.useState("All categories");
   return (
     <main className="w-full h-full">
       <section className="w-full h-1/3 bg-white flex flex-col gap-6 justify-between items-center">
@@ -30,8 +33,10 @@ const Class = () => {
             aria-label="Tabs variants"
             onSelectionChange={(title) => {
               setCategory(title as string);
-              setPage(1)
-              router.push(`?page=${page - page + 1}&pageSize=10&category=${title}`);
+              setPage(1);
+              router.push(
+                `?page=${page - page + 1}&pageSize=10&category=${title}`
+              );
             }}
           >
             {menu.courses.map((items, index) => (
@@ -51,14 +56,19 @@ const Class = () => {
       </section>
       <section className="w-full h-full bg-color-coursesTopic flex flex-col gap-16 items-center p-8">
         <div className="w-full h-full grid grid-cols-4 gap-8">
-          <CardDemo />
-          <CardDemo />
-          <CardDemo />
-          <CardDemo />
-          <CardDemo />
-          <CardDemo />
-          <CardDemo />
-          <CardDemo />
+          {isLoading && <div>Loading...</div>}
+          {data &&
+            data.data.classes.map((items: any, index: number) => (
+              <CardDemo
+                key={index}
+                title={items.title}
+                level={items.difficultyLevel}
+                lesson={items.lesson}
+                time={items.time}
+                price={items.price}
+                discountPrice={items.discountPrice}
+              />
+            ))}
         </div>
         <PaginationElement
           page={page}

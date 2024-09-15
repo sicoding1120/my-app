@@ -4,7 +4,25 @@ import CardDemo from "./card";
 import { GiRank1 } from "react-icons/gi";
 import { IoMedalOutline } from "react-icons/io5";
 
-const DetailClasses = ({ title }: { title: string | any }) => {
+const DetailClasses = ({
+  title,
+  time,
+  lesson,
+  desc,
+  stepClass,
+  prepareToLearn,
+  level,
+  mentorixPoin
+}: {
+  title: string | any;
+  time: number;
+  lesson: number;
+  desc: string;
+  stepClass: string[] | any;
+    prepareToLearn: string[] | any;
+    level: string | any
+  mentorixPoin:string |number |any
+}) => {
   const { icons } = useIcons();
   return (
     <main className="w-full h-full">
@@ -17,17 +35,18 @@ const DetailClasses = ({ title }: { title: string | any }) => {
       </section>
       <section className="w-full h-full  pt-14 px-16 flex flex-col gap-6">
         <div className="flex flex-col gap-3 ">
-          <h2 className="text-6xl font-bold capitalize">intro to javascript</h2>
+          <h2 className="text-6xl font-bold capitalize">{title}</h2>
           <h6 className="text-xl font-semibold ">MENTORIX Academy</h6>
         </div>
         <div className="flex flex-col gap-4 border-b pb-12">
           <div className="flex gap-4 items-center">
             <div className="flex gap-2 items-center text-slate-400">
               <icons.book size={20} />
-              12 lesson
+              {lesson} lesson
             </div>
             <div className="flex gap-2 items-center text-slate-400">
-              <icons.timer size={20} />3 hr 35 min
+              <icons.timer size={20} />
+              {time / 60} hours {time % 60} minutes
             </div>
           </div>
           <button className="btn w-1/4 text-lg capitalize">ikuti kelas</button>
@@ -37,81 +56,70 @@ const DetailClasses = ({ title }: { title: string | any }) => {
         <div className="w-2/3 h-full  py-8 flex flex-col gap-8 pr-6">
           <div className="w-full flex flex-col gap-6">
             <h4 className="text-2xl font-bold capitalize">tentang kelas ini</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod,
-              voluptatem nulla! Beatae nam quaerat consequuntur a at quasi.
-              Fugiat tempore corrupti quam cum nisi recusandae corporis odit
-              excepturi laborum natus. Beatae, laudantium? Maxime quidem
-              molestiae quos voluptates eaque cum perferendis autem
-              reprehenderit libero accusantium distinctio, exercitationem atque
-              magni minus deleniti quas rerum id a assumenda ullam saepe amet
-              recusandae earum. Autem quas amet doloremque voluptatum illum, et
-              corporis libero, corrupti architecto, voluptates ducimus eaque est
-              mollitia! Voluptate neque fugiat architecto est. Doloremque ab
-              nobis ducimus sed eum pariatur quibusdam necessitatibus. Veritatis
-              dolore maiores laudantium deserunt earum itaque quisquam,
-              explicabo libero repellat minima esse exercitationem mollitia
-              optio nam necessitatibus repudiandae? Iure eligendi nesciunt
-              architecto eum et nisi corporis aut error autem? Nisi dolorem
-              veritatis cum quos voluptatem numquam temporibus, vel reiciendis
-              incidunt nemo.
-            </p>
+            <p>{desc}</p>
           </div>
           <div className="w-full flex flex-col gap-6">
             <h4 className="text-2xl font-bold capitalize">
               apa yang akan di pelajari ?
             </h4>
             <ul className="flex flex-col gap-3 pl-6 list-disc">
-              <li>Struktur Dokumen HTML</li>
-              <li>Struktur Dokumen HTML</li>
-              <li>Struktur Dokumen HTML</li>
-              <li>Struktur Dokumen HTML</li>
-              <li>Struktur Dokumen HTML</li>
+              {stepClass.map((title: string, index: number) => (
+                <li key={index}>{title}</li>
+              ))}
             </ul>
           </div>
           <div className="w-full flex flex-col gap-6">
             <h4 className="text-2xl font-bold capitalize">persiapan kelas</h4>
             <ul className="flex flex-col gap-3 pl-6 list-disc">
-              <li>Struktur Dokumen HTML</li>
-              <li>Struktur Dokumen HTML</li>
-              <li>Struktur Dokumen HTML</li>
-              <li>Struktur Dokumen HTML</li>
-              <li>Struktur Dokumen HTML</li>
+              {prepareToLearn.map((title: string, index: number) => (
+                <li key={index}>{title}</li>
+              ))}
+              
             </ul>
           </div>
         </div>
         <div className="w-1/3 h-[97vh] sticky top-2 px-6 py-2 flex flex-col gap-5">
           <div className="w-full h-full border-2 border-slate-200 rounded-lg p-4 flex flex-col gap-4 overflow-scroll scrollbar-hide">
             <h3 className="text-2xl font-bold capitalize">detail kelas</h3>
-            <div className="w-full h-[60px] flex gap-4">
-              <icons.book className="w-8 h-8" />
-            </div>
-            <div className="w-full h-[60px] flex gap-4">
-              <GiRank1 className="w-8 h-8 font-bold" />
-            </div>
-            <div className="w-full h-[60px] flex gap-4">
-              <IoMedalOutline  className="w-8 h-8"/>
-            </div>
-            <div className="w-full h-[60px] flex gap-4">
-              <icons.book className="w-8 h-8" />
+            <div className="px-4 flex flex-col h-3/4">
+              <div className="w-full h-[60px] flex gap-4  font-semibold">
+                <icons.book className="w-8 h-8" />
+                {lesson} lesson
+              </div>
+              <div className="w-full h-[60px] flex gap-4  font-semibold">
+                <GiRank1 className="w-8 h-8 font-bold" />
+                {level}
+              </div>
+              <div className="w-full h-[60px] flex gap-4  font-semibold">
+                <IoMedalOutline className="w-8 h-8" />
+                {mentorixPoin} max  MENTORIX poin
+              </div>
             </div>
           </div>
-          <div className="w-full h-full border-2 border-slate-200 rounded-lg p-4 flex flex-col gap-4">
-            <h3 className="text-2xl">detail kelas</h3>
-            <div className="w-full h-[60px] bg-red-500 "></div>
-            <div className="w-full h-[60px] bg-red-500 "></div>
+          <div className="w-full h-full border-2 border-slate-200 rounded-lg p-4 flex flex-col gap-4 overflow-scroll scrollbar-hide">
+            <h3 className="text-2xl font-bold capitalize">mentor kelas</h3>
+            <div className="w-full h-[60px] flex gap-4 items-center">
+              <div className="w-12 h-12 rounded-full bg-red-500"></div>
+              <p className="font-semibold capitalize">Daffa hafizh firdaus</p>
+            </div>
+            <div className="w-full h-[60px] flex gap-4 items-center">
+              <div className="w-12 h-12 rounded-full bg-red-500"></div>
+              <p className="font-semibold capitalize">Daffa hafizh firdaus</p>
+            </div>
+            <div className="w-full h-[60px] flex gap-4 items-center">
+              <div className="w-12 h-12 rounded-full bg-red-500"></div>
+              <p className="font-semibold capitalize">Daffa hafizh firdaus</p>
+            </div>
           </div>
-          <div className="w-full h-full border-2 border-slate-200 rounded-lg">
-            <div className="flex flex-col gap-2 px-4 py-2 border border-slate-200 rounded-lg h-full ">
-              <h3 className="text-2xl font-semibold capitalize ">materi</h3>
+          <div className="w-full h-full border-2 border-slate-200 rounded-lg overflow-scroll scrollbar-hide">
+            <div className="flex flex-col gap-2 px-4 py-2 rounded-lg h-full ">
+              <div className="flex justify-between">
+                <h3 className="text-2xl font-semibold capitalize ">materi</h3>
+                <button className="text-blue-500 capitalize font-semibold underline">
+                  lihat semua
+                </button>
+              </div>
               <div className="flex flex-col gap-1">
-                <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
-                  <ul className="list-disc">
-                    <li className="font-semibold">
-                      Stasfngqdfjndsfwehjrbgfdsgw
-                    </li>
-                  </ul>
-                </div>
                 <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
                   <ul className="list-disc">
                     <li className="font-semibold">

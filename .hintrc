@@ -1,5 +1,7 @@
 {
-  "extends": ["development"],
+  "extends": [
+    "development"
+  ],
   "hints": {
     "axe/forms": [
       "default",
@@ -10,9 +12,12 @@
     "compat-api/html": [
       "default",
       {
-        "ignore": ["iframe[allow]"]
+        "ignore": [
+          "iframe[allow]"
+        ]
       }
     ],
-    "typescript-config/consistent-casing": "off"
+    "typescript-config/consistent-casing": "off",
+    "button-type": "off"
   }
 }
