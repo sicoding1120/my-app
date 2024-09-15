@@ -27,11 +27,7 @@ export class classService {
     error: any
   ) {
     const classes = await prisma.class.findMany({
-      include: {
-        participants: true,
-        mentors: true,
-        ulasan: true,
-      },
+      
     });
     res.status(200).json(Response._getSuccess(classes as never));
     if (req.statusCode === 404) {
@@ -49,12 +45,7 @@ export class classService {
   ) {
     const classes = await prisma.class.findUnique({
       where: { id_credential: req.body.where },
-      include: {
-        participants: false,
-        mentors: false,
-        Image: false,
-        ulasan: false,
-      },
+     
     });
     res.status(200).json(classes as never);
     if (req.statusCode === 404) {
@@ -72,12 +63,7 @@ export class classService {
   ) {
     const classes = await prisma.class.findUnique({
       where: { id_credential: req.body.where },
-      include: {
-        participants: true,
-        mentors: true,
-        Image: true,
-        ulasan: true,
-      },
+     
     });
     res.status(200).json(classes as never);
     if (req.statusCode === 404) {
@@ -95,34 +81,35 @@ export class classService {
   ) {
     const create = await prisma.class.create({
       data: {
-        ...req.body.data,
-        participants: {
-          connect: req.body.relation.participants.map((id_user: string) => ({
-            id: id_user,
-          })),
-        },
-        mentors: {
-          connect: req.body.relation.mentors.map((id_user: string) => ({
-            id: id_user,
-          })),
-        },
-        Image: {
-          connect: req.body.relation.Image.map((id_image: string) => ({
-            id: id_image,
-          })),
-        },
-        ulasan: {
-          connect: req.body.relation.ulasan.map((id_ulasan: string) => ({
-            id: id_ulasan,
-          })),
-        },
-      } as never,
-      include: {
-        participants: true,
-        mentors: true,
-        Image: true,
-        ulasan: true,
-      },
+        ...req.body.data
+        //   participants: {
+        //     connect: req.body.relation.participants.map((id_user: string) => ({
+        //       id: id_user,
+        //     })),
+        //   },
+        //   mentors: {
+        //     connect: req.body.relation.mentors.map((id_user: string) => ({
+        //       id: id_user,
+        //     })),
+        //   },
+        //   Image: {
+        //     connect: req.body.relation.Image.map((id_image: string) => ({
+        //       id: id_image,
+        //     })),
+        //   },
+        //   ulasan: {
+        //     connect: req.body.relation.ulasan.map((id_ulasan: string) => ({
+        //       id: id_ulasan,
+        //     })),
+        //   },
+        // } as never,
+        // include: {
+        //   participants: true,
+        //   mentors: true,
+        //   Image: true,
+        //   ulasan: true,
+        // },
+      }
     });
     res.status(201).json(Response._createDataSuccess(create as never));
     if (req.statusCode === 500) {
@@ -173,11 +160,11 @@ export class classService {
     const update = await prisma.class.update({
       where: { id_credential: req.body.where },
       data: {
-        participants: {
-          connect: req.body.participants.map((id_user: string) => ({
-            id: id_user,
-          })),
-        },
+        // participants: {
+        //   connect: req.body.participants.map((id_user: string) => ({
+        //     id: id_user,
+        //   })),
+        // },
       },
     });
     res.status(200).json(Response._updateDataSuccess(update as never));
@@ -197,11 +184,11 @@ export class classService {
     const update = await prisma.class.update({
       where: { id_credential: req.body.where },
       data: {
-        mentors: {
-          connect: req.body.mentors.map((id_user: any) => ({
-            id: id_user,
-          })),
-        },
+        // mentors: {
+        //   connect: req.body.mentors.map((id_user: any) => ({
+        //     id: id_user,
+        //   })),
+        // },
       },
     } as never);
     res.status(200).json(Response._updateDataSuccess(update as never));
@@ -221,11 +208,11 @@ export class classService {
     const update = await prisma.class.update({
       where: { id_credential: req.body.where },
       data: {
-        Image: {
-          connect: req.body.ImageClass.map((id_image: string) => ({
-            id: id_image,
-          })),
-        },
+        // Image: {
+        //   connect: req.body.ImageClass.map((id_image: string) => ({
+        //     id: id_image,
+        //   })),
+        // },
       },
     });
     res.status(200).json(Response._updateDataSuccess(update as never));
@@ -245,11 +232,11 @@ export class classService {
     const update = await prisma.class.update({
       where: { id_credential: req.body.where },
       data: {
-        ulasan: {
-          connect: req.body.ulasan.map((id_ulasan: string) => ({
-            id: id_ulasan,
-          })),
-        },
+        // ulasan: {
+        //   connect: req.body.ulasan.map((id_ulasan: string) => ({
+        //     id: id_ulasan,
+        //   })),
+        // },
       },
     });
     res.status(200).json(Response._updateDataSuccess(update as never));
@@ -269,11 +256,11 @@ export class classService {
     const deleteParticipants = await prisma.class.update({
       where: { id_credential: req.body.where },
       data: {
-        participants: {
-          disconnect: req.body.participants.map((id_user: string) => ({
-            id: id_user,
-          })),
-        },
+        // participants: {
+        //   disconnect: req.body.participants.map((id_user: string) => ({
+        //     id: id_user,
+        //   })),
+        // },
       },
     });
     res
