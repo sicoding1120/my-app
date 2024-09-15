@@ -15,13 +15,13 @@ export class userService {
     error: any
   ) {
     const users = await prisma.user.findMany({
-      include: {
-        enrolledClasses: false,
-        mentoredClasses: false,
-        comment: false,
-        followers: false,
-        following: false,
-      },
+      // include: {
+      //   enrolledClasses: false,
+      //   mentoredClasses: false,
+      //   comment: false,
+      //   followers: false,
+      //   following: false,
+      // },
     });
     res.status(200).json(Response._getSuccess(users as never));
     if (req.statusCode === 404) {
@@ -38,13 +38,13 @@ export class userService {
     error: any
   ) {
     const users = await prisma.user.findMany({
-      include: {
-        enrolledClasses: true,
-        mentoredClasses: true,
-        comment: true,
-        followers: true,
-        following: true,
-      },
+      // include: {
+      //   enrolledClasses: true,
+      //   mentoredClasses: true,
+      //   comment: true,
+      //   followers: true,
+      //   following: true,
+      // },
     });
     res.status(200).json(Response._getSuccess(users as never));
     if (req.statusCode === 404) {
@@ -61,13 +61,13 @@ export class userService {
   ) {
     const user = await prisma.user.findUnique({
       where: { id: req.body.where },
-      include: {
-        enrolledClasses: false,
-        mentoredClasses: false,
-        comment: false,
-        followers: false,
-        following: false,
-      },
+      // include: {
+      //   enrolledClasses: false,
+      //   mentoredClasses: false,
+      //   comment: false,
+      //   followers: false,
+      //   following: false,
+      // },
     });
     res.status(200).json(user as never);
     if (req.statusCode === 404) {
@@ -84,13 +84,13 @@ export class userService {
   ) {
     const user = await prisma.user.findUnique({
       where: { id: req.body.where },
-      include: {
-        enrolledClasses: true,
-        mentoredClasses: true,
-        comment: true,
-        followers: true,
-        following: true,
-      },
+      // include: {
+      //   enrolledClasses: true,
+      //   mentoredClasses: true,
+      //   comment: true,
+      //   followers: true,
+      //   following: true,
+      // },
     });
     res.status(200).json(user as never);
     if (req.statusCode === 404) {
