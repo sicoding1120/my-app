@@ -30,7 +30,7 @@ export class classService {
         ulasan: true,
         participants: true,
         mentors: true,
-        MateriClass:true
+        // MateriClass:true
       } ,
     });
     res.status(200).json(Response._getSuccess(classes as never));
