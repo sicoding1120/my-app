@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider      = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -34,6 +34,9 @@ model User {
   following       UserFollower[] @relation("following")
   FotoProfile     Image?         @relation("ProfilePicture")
   password        String         @unique
+  rixpoin         Int?
+  otp             String?
+  otpExpires      DateTime?
   fullName        String?
   email           String         @unique
   profilePicture  String?
@@ -46,6 +49,14 @@ model User {
   mentoredClasses Class[]        @relation("ClassMentors")
   comment         Comment[]      @relation("userComment")
   schollStatus    String?
+}
+
+model MateriClass {
+  id                 String?
+  urlYoutube         String   @unique
+  content            String[]
+  Class              Class?   @relation("MateriClass", fields: [Classid_credential], references: [id_credential])
+  Classid_credential String?
 }
 
 model Image {
@@ -69,29 +80,30 @@ model UserFollower {
 }
 
 model Class {
-  id_credential    String    @id @unique @default(uuid())
-  title            String
-  price            Int
-  isDiscount       Boolean
-  Image            Image?    @relation("ImageClass")
-  discountPrice    Int
-  difficultyLevel  String
-  lesson           Int
-  mentorixPoin     Int
-  time             Int
-  progress         Int
-  authorTeams      String
-  aboutClass       String
+  id_credential    String        @id @unique @default(uuid())
+  title            String?
+  price            Int?
+  isDiscount       Boolean?
+  Image            Image?        @relation("ImageClass")
+  discountPrice    Int?
+  difficultyLevel  String?
+  lesson           Int?
+  mentorixPoin     Int?
+  time             Int?
+  progress         Int?
+  authorTeams      String?
+  aboutClass       String?
   StepClass        String[]
   materiList       String[]
   prepareToLearn   String[]
-  nilai            Nilai?    @default(D)
-  isCertivicate    Boolean
-  urlCertivication String
-  like             Int
-  ulasan           Comment[] @relation("CommentClass")
-  participants     User[]    @relation("ClassParticipants")
-  mentors          User[]    @relation("ClassMentors")
+  nilai            Nilai?        @default(D)
+  isCertivicate    Boolean?
+  urlCertivication String?
+  like             Int?
+  ulasan           Comment[]     @relation("CommentClass")
+  participants     User[]        @relation("ClassParticipants")
+  mentors          User[]        @relation("ClassMentors")
+  MateriClass      MateriClass[] @relation("MateriClass")
 }
 
 model Comment {
@@ -100,9 +112,6 @@ model Comment {
   Class              Class?   @relation("CommentClass", fields: [classId_credential], references: [id_credential])
   classId_credential String?
   user               User?    @relation("userComment", fields: [userId], references: [id])
-  // ReplyId            String?
-  // replies            Comment[] @relation("CommentReplies")
-  // parent             Comment?  @relation("CommentReplies", fields: [ReplyId], references: [id])
   createdAt          DateTime @default(now())
   userId             String
 }

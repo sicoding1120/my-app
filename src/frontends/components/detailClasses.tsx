@@ -3,6 +3,8 @@ import React from "react";
 import CardDemo from "./card";
 import { GiRank1 } from "react-icons/gi";
 import { IoMedalOutline } from "react-icons/io5";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 const DetailClasses = ({
   title,
@@ -12,18 +14,21 @@ const DetailClasses = ({
   stepClass,
   prepareToLearn,
   level,
-  mentorixPoin
+  mentorixPoin,
+  materiList
 }: {
   title: string | any;
   time: number;
   lesson: number;
   desc: string;
   stepClass: string[] | any;
-    prepareToLearn: string[] | any;
-    level: string | any
-  mentorixPoin:string |number |any
+  prepareToLearn: string[] | any;
+  level: string | any;
+    mentorixPoin: string | number | any;
+  materiList:String[] | any
 }) => {
   const { icons } = useIcons();
+  const router = useRouter();
   return (
     <main className="w-full h-full">
       <section
@@ -49,7 +54,7 @@ const DetailClasses = ({
               {time / 60} hours {time % 60} minutes
             </div>
           </div>
-          <button className="btn w-1/4 text-lg capitalize">ikuti kelas</button>
+          <button className="btn w-1/4 text-lg capitalize" onClick={() => router.push(`/courses/class/${title}/learn`)}>ikuti kelas</button>
         </div>
       </section>
       <section className="w-full h-full flex gap-8 px-16">
@@ -74,7 +79,6 @@ const DetailClasses = ({
               {prepareToLearn.map((title: string, index: number) => (
                 <li key={index}>{title}</li>
               ))}
-              
             </ul>
           </div>
         </div>
@@ -92,7 +96,7 @@ const DetailClasses = ({
               </div>
               <div className="w-full h-[60px] flex gap-4  font-semibold">
                 <IoMedalOutline className="w-8 h-8" />
-                {mentorixPoin} max  MENTORIX poin
+                {mentorixPoin} max MENTORIX poin
               </div>
             </div>
           </div>
@@ -120,27 +124,15 @@ const DetailClasses = ({
                 </button>
               </div>
               <div className="flex flex-col gap-1">
-                <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
-                  <ul className="list-disc">
-                    <li className="font-semibold">
-                      Stasfngqdfjndsfwehjrbgfdsgw
-                    </li>
-                  </ul>
-                </div>
-                <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
-                  <ul className="list-disc">
-                    <li className="font-semibold">
-                      Stasfngqdfjndsfwehjrbgfdsgw
-                    </li>
-                  </ul>
-                </div>
-                <div className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
-                  <ul className="list-disc">
-                    <li className="font-semibold">
-                      Stasfngqdfjndsfwehjrbgfdsgw
-                    </li>
-                  </ul>
-                </div>
+                {materiList.slice(0,3).map((data:any,index:number) => (
+                  <div key={index} className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
+                    <ul className="list-disc">
+                      <li className="font-semibold">
+                        {data}
+                      </li>
+                    </ul>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

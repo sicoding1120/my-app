@@ -8,15 +8,17 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { FaKey } from "react-icons/fa";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const router = useRouter();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post('/api/users', { username, password })
-      window.location.reload()
+      const res = await axios.post('/api/users', {email, password })
+      router.push('/auth/confirmEmail')
     } catch (err) {
       if(err) throw err
     }
@@ -36,7 +38,7 @@ const Login = () => {
           <div className="flex flex-col gap-2">
             <label className="input input-bordered flex items-center gap-2">
               <MdEmail />
-              <input type="text" className="grow" placeholder="Email" onChange={(e) => setUsername(e.target.value)}/>
+              <input type="text" className="grow" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
             </label>
             <label className="input input-bordered flex items-center gap-2">
               <FaKey />

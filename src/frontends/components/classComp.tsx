@@ -12,7 +12,10 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const Class = () => {
   const { icons } = useIcons();
   const { menu } = useData();
-  const { data, error, isLoading } = useSWR("/api/class", fetcher);
+  const { data, error, isLoading } = useSWR(
+    "https://my-app-one-pi-53.vercel.app/api/class",
+    fetcher
+  );
   const router = useRouter();
   const [page, setPage] = React.useState(1);
   const [category, setCategory] = React.useState("All categories");

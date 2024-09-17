@@ -1,13 +1,15 @@
 import Navbar from "@/frontends/components/navbar";
 import React from "react";
 
-const Class = () => {
+const MateriClass = ({ data }: { data: any }) => {
+  const materi = data.data.classes.map((data: any) => data);
+  console.log(materi);
   return (
-    <div className="">
-    <Navbar />
-      <div className="w-full h-full px-12 py-24">
-        <div className="flex gap-8">
-          <div className="w-3/4 flex flex-col gap-12 border-2 rounded-md p-12">
+    <div className="w-full h-screen">
+      <Navbar />
+      <div className="w-full h-screen px-12 pt-24">
+        <div className="flex gap-8 ">
+          <div className="w-3/4 h-[85vh] overflow-scroll scrollbar-default scroll-b flex flex-col gap-12 border-2 rounded-md p-12">
             <h1 className="text-3xl font-bold">Pengantar Kelas</h1>
             <p className="text-lg text-slate-500">
               Dikelas ini, Lorem ipsum dolor sit amet consectetur, adipisicing
@@ -44,13 +46,14 @@ const Class = () => {
             </button>
           </div>
           {/* bikin sidebar */}
-          <div className="w-1/4">
-            <div className="w-full h-96 flex flex-col gap-4 border-2 rounded-md p-4">
-              <div className="w-full h-full skeleton px-4 py-2">Bab 1</div>
-              <div className="w-full h-full skeleton px-4 py-2">Bab 1</div>
-              <div className="w-full h-full skeleton px-4 py-2">Bab 1</div>
-              <div className="w-full h-full skeleton px-4 py-2">Bab 1</div>
-            </div>
+          <div className="w-1/4 flex flex-col p-4 border-2 h-[85vh] overflow-scroll scrollbar-hide rounded-md">
+            <ul className="list-disc flex flex-col gap-4 pl-6">
+              {materi.map((data: any) =>
+                data.materiList.map((title: any) => (
+                  <li key={title}>{title}</li>
+                ))
+              )}
+            </ul>
           </div>
         </div>
       </div>
@@ -58,4 +61,4 @@ const Class = () => {
   );
 };
 
-export default Class;
+export default MateriClass;

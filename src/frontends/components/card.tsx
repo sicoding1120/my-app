@@ -9,9 +9,7 @@ const CardDemo = ({title,level,lesson,time,price, discountPrice}: any) => {
   const { icons } = useIcons();
   const router = useRouter();
   const priceNow = price - (price * discountPrice) / 100;
-  console.log(priceNow);
-
-  
+  console.log(priceNow);  
   return (
     <div className="w-[300px] h-[450px] bg-white shadow-md rounded-md overflow-hidden">
       <div className="w-full h-1/2 bg-red-500 p-4">
@@ -38,9 +36,9 @@ const CardDemo = ({title,level,lesson,time,price, discountPrice}: any) => {
             <Badge colorScheme="green" className="text-sm">
               {discountPrice}%
             </Badge>
-            <p className="text-lg font-semibold line-through">Rp{price}rb</p>
+            <p className="text-lg font-semibold line-through">{price}</p>
           </div>
-          <p className="text-lg font-semibold ">Rp{priceNow}rb</p>
+          <p className="text-lg font-semibold ">{parseInt(priceNow.toString())}</p>
         </div>
         <button
           className="btn w-full capitalize"

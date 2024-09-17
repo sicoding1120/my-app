@@ -10,9 +10,7 @@ export class classService {
     res: NextApiResponse,
     error: any
   ) {
-    const classes = await prisma.class.findMany({
-    
-    });
+    const classes = await prisma.class.findMany({});
     res.status(200).json(Response._getSuccess(classes as never));
     if (req.statusCode === 404) {
       res.status(404).json(Response._getFailure(error));
@@ -27,7 +25,13 @@ export class classService {
     error: any
   ) {
     const classes = await prisma.class.findMany({
-      
+      include: {
+        Image: true,
+        ulasan: true,
+        participants: true,
+        mentors: true,
+        MateriClass:true
+      } ,
     });
     res.status(200).json(Response._getSuccess(classes as never));
     if (req.statusCode === 404) {
@@ -45,7 +49,6 @@ export class classService {
   ) {
     const classes = await prisma.class.findUnique({
       where: { id_credential: req.body.where },
-     
     });
     res.status(200).json(classes as never);
     if (req.statusCode === 404) {
@@ -63,7 +66,6 @@ export class classService {
   ) {
     const classes = await prisma.class.findUnique({
       where: { id_credential: req.body.where },
-     
     });
     res.status(200).json(classes as never);
     if (req.statusCode === 404) {
@@ -81,7 +83,7 @@ export class classService {
   ) {
     const create = await prisma.class.create({
       data: {
-        ...req.body.data
+        ...req.body,
         //   participants: {
         //     connect: req.body.relation.participants.map((id_user: string) => ({
         //       id: id_user,
@@ -109,7 +111,7 @@ export class classService {
         //   Image: true,
         //   ulasan: true,
         // },
-      }
+      },
     });
     res.status(201).json(Response._createDataSuccess(create as never));
     if (req.statusCode === 500) {
